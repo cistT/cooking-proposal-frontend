@@ -1,15 +1,10 @@
-.container {
-  display: flex;
-  justify-content: space-between;
+@use 'styles/variables.scss';
+.contaier {
   align-items: center;
+  padding: 10px 0 10px 20px;
 
-  .group > .news-button,
-  .login-button {
-    width: 150px;
-    border-right: 1px solid #eee;
-  }
-
-  .group > .setting-button {
-    width: 150px;
+  .name-link > .name {
+    font-size: variables.$header-font-size-medium;
+    font-weight: bold;
   }
 }
