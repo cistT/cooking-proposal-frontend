@@ -1,0 +1,15 @@
+@use 'styles/variables.scss';
+
+.container {
+  display: flex;
+  flex-flow: column;
+  padding: 0 20px;
+
+  .image {
+    max-width: 250px;
+    margin: 0 auto;
+  }
+  .header {
+    font-size: variables.$header-font-size-medium;
+  }
+}
