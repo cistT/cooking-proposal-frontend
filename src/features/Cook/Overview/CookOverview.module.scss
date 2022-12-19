@@ -1,0 +1,53 @@
+@use 'styles/variables.scss';
+
+.container {
+  display: grid;
+  grid-template-columns: 100px;
+  gap: 10px;
+  font-size: variables.$font-size-medium;
+  margin: 15px 0;
+
+  grid-template-areas:
+    'description description'
+    'indication-label indication'
+    'cost-label cost'
+    'material-label material';
+
+  > .description {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    grid-area: description;
+  }
+
+  > .indication-label {
+    font-weight: bold;
+    grid-area: indication-label;
+  }
+
+  > .indication {
+    grid-area: indication;
+  }
+
+  > .cost-label {
+    font-weight: bold;
+    grid-area: cost-label;
+  }
+
+  > .cost {
+    grid-area: cost;
+  }
+
+  > .material-label {
+    font-weight: bold;
+    grid-area: material-label;
+  }
+
+  > .material {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+
+    grid-area: material;
+  }
+}
