@@ -1,0 +1,14 @@
+@use 'styles/variables.scss';
+
+.container {
+  display: flex;
+  gap: 20px;
+  padding-left: 20px;
+
+  align-items: center;
+  cursor: pointer;
+
+  .text {
+    font-size: variables.$header-font-size-medium;
+  }
+}
