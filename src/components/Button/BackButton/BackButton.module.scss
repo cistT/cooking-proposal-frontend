@@ -1,0 +1,6 @@
+@use 'styles/variables.scss';
+
+.container {
+  height: 60px;
+  font-size: variables.$font-size-medium;
+}
