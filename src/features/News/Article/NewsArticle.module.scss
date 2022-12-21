@@ -1,0 +1,26 @@
+@use 'styles/variables.scss';
+
+.container {
+  min-height: 300px;
+
+  > .upper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: variables.$font-size-medium;
+  }
+
+  > .upper > .category {
+    font-weight: bold;
+  }
+
+  > .title {
+    font-size: variables.$header-font-size-medium;
+    font-weight: bold;
+  }
+
+  > .article {
+    font-size: variables.$font-size-medium;
+    white-space: pre-wrap;
+  }
+}
