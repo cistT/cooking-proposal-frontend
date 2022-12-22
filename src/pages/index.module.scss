@@ -1,0 +1,13 @@
+@use 'styles/variables.scss';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  .icon {
+    //アイコンの横の文字と同じ大きさにするため、この大きさとした
+    width: variables.$header-font-size-medium;
+    height: variables.$header-font-size-medium;
+  }
+}
