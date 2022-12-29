@@ -2,9 +2,17 @@
 .contaier {
   align-items: center;
   padding: 10px 0 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
   .name-link > .name {
     font-size: variables.$header-font-size-medium;
     font-weight: bold;
+  }
+
+  .button {
+    height: variables.$header-font-size-medium;
+    font-size: variables.$header-font-size-medium;
   }
 }
