@@ -6,12 +6,12 @@ import styles from './index.module.scss'
 import BackButton from 'components/Button/BackButton/BackButton'
 import Loading from 'components/Loading/Loading'
 import { UIDContext } from 'features/Auth/UIDProvider'
-import CookHorizonCard from 'features/Cook/HorizonCard/CookHorizonCard'
+import RecipeHorizonCard from 'features/Recipe/HorizonCard/RecipeHorizonCard'
 import {
   registerFavoriteRecipe,
   releaseFavoriteRecipe,
-} from 'features/Cook/operateFavoriteCook'
-import useFavoriteRecipes from 'features/Cook/useFavoriteRecipes'
+} from 'features/Recipe/operateFavoriteRecipe'
+import useFavoriteRecipes from 'features/Recipe/useFavoriteRecipes'
 
 const Index = () => {
   const uid = useContext(UIDContext)
@@ -32,7 +32,7 @@ const Index = () => {
 
           <>
             {favoriteRecipes.map((recipe) => (
-              <CookHorizonCard
+              <RecipeHorizonCard
                 key={recipe.recipeId}
                 header={recipe.recipeTitle}
                 image={recipe.smallImageUrl}
