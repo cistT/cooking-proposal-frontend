@@ -1,20 +1,20 @@
 import { Text } from '@mantine/core'
 import React from 'react'
 
-import styles from './CookOverview.module.scss'
+import styles from './RecipeOverview.module.scss'
 
 // 人間が短期的にモノを覚えれる個数が4個のため、表示する材料の数を4とした
 // ただし、1行で材料が表示できない場合は、材料を...で省略する
 const MAX_MATERIAL_NUMBER = 4
 
-export type CookOverviewProps = Readonly<{
+export type RecipeOverviewProps = Readonly<{
   description: string
   indication: string
   cost: string
   material: string[]
 }>
 
-const CookOverview: React.FC<CookOverviewProps> = (props) => {
+const RecipeOverview: React.FC<RecipeOverviewProps> = (props) => {
   const { description, indication, cost, material } = props
 
   const materialString = material
@@ -35,4 +35,4 @@ const CookOverview: React.FC<CookOverviewProps> = (props) => {
   )
 }
 
-export default CookOverview
+export default RecipeOverview

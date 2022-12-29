@@ -5,11 +5,11 @@ import FavoriteButton from '../FavoriteButton/FavoriteButton'
 import ShowRecipeButton from '../ShowRecipeButton/ShowRecipeButton'
 
 import VerticalCard from 'components/Card/VerticalCard/VerticalCard'
-import CookOverview, {
-  CookOverviewProps,
-} from 'features/Cook/Overview/CookOverview'
+import RecipeOverview, {
+  RecipeOverviewProps,
+} from 'features/Recipe/Overview/RecipeOverview'
 
-type CookVerticalCardProps = Readonly<{
+type RecipeVerticalCardProps = Readonly<{
   header: string
   image: string
   imageAlt?: string
@@ -18,9 +18,9 @@ type CookVerticalCardProps = Readonly<{
   registerFavoriteRecipe?: () => void
   releaseFavoriteRecipe?: () => void
 }> &
-  CookOverviewProps
+  RecipeOverviewProps
 
-const CookVerticalCard: FC<CookVerticalCardProps> = (props) => {
+const RecipeVerticalCard: FC<RecipeVerticalCardProps> = (props) => {
   const {
     description,
     indication,
@@ -37,7 +37,7 @@ const CookVerticalCard: FC<CookVerticalCardProps> = (props) => {
       {...props}
       explanation={
         <>
-          <CookOverview
+          <RecipeOverview
             description={description}
             indication={indication}
             cost={cost}
@@ -60,4 +60,4 @@ const CookVerticalCard: FC<CookVerticalCardProps> = (props) => {
   )
 }
 
-export default CookVerticalCard
+export default RecipeVerticalCard

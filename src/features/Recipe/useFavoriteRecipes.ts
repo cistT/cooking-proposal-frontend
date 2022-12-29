@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
 import Recipe from './Recipe'
-import { fetchFavoriteRecipes } from './operateFavoriteCook'
+import { fetchFavoriteRecipes } from './operateFavoriteRecipe'
 
 import { UID } from 'features/Auth/UID'
 

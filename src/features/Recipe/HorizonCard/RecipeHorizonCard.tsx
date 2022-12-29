@@ -3,14 +3,14 @@ import React, { FC } from 'react'
 import FavoriteButton from '../FavoriteButton/FavoriteButton'
 import ShowRecipeButton from '../ShowRecipeButton/ShowRecipeButton'
 
-import styles from './CookHorizonCard.module.scss'
+import styles from './RecipeHorizonCard.module.scss'
 
 import HorizonCard from 'components/Card/HorizonCard/HorizonCard'
-import CookOverview, {
-  CookOverviewProps,
-} from 'features/Cook/Overview/CookOverview'
+import RecipeOverview, {
+  RecipeOverviewProps,
+} from 'features/Recipe/Overview/RecipeOverview'
 
-type CookHorizonCardProps = Readonly<{
+type RecipeHorizonCardProps = Readonly<{
   header: string
   href: string
   image?: string
@@ -19,9 +19,9 @@ type CookHorizonCardProps = Readonly<{
   registerFavoriteRecipe: () => void
   releaseFavoriteRecipe: () => void
 }> &
-  CookOverviewProps
+  RecipeOverviewProps
 
-const CookHorizonCard: FC<CookHorizonCardProps> = (props) => {
+const RecipeHorizonCard: FC<RecipeHorizonCardProps> = (props) => {
   const {
     description,
     indication,
@@ -38,7 +38,7 @@ const CookHorizonCard: FC<CookHorizonCardProps> = (props) => {
       {...props}
       explanation={
         <>
-          <CookOverview
+          <RecipeOverview
             description={description}
             indication={indication}
             cost={cost}
@@ -61,4 +61,4 @@ const CookHorizonCard: FC<CookHorizonCardProps> = (props) => {
   )
 }
 
-export default CookHorizonCard
+export default RecipeHorizonCard

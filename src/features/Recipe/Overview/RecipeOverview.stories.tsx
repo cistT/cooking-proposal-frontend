@@ -1,17 +1,17 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 
-import CookOverview from './CookOverview'
+import RecipeOverview from './RecipeOverview'
 
 import testData from 'data/testData'
 
 export default {
-  title: 'feature/Cook/CookOverview',
-  component: CookOverview,
-} as ComponentMeta<typeof CookOverview>
+  title: 'feature/Recipe/RecipeOverview',
+  component: RecipeOverview,
+} as ComponentMeta<typeof RecipeOverview>
 
-const Template: ComponentStory<typeof CookOverview> = (args) => (
-  <CookOverview {...args} />
+const Template: ComponentStory<typeof RecipeOverview> = (args) => (
+  <RecipeOverview {...args} />
 )
 
 export const Primary = Template.bind({})
