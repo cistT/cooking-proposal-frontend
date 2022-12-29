@@ -5,12 +5,12 @@ import styles from './index.module.scss'
 import BackButton from 'components/Button/BackButton/BackButton'
 import Loading from 'components/Loading/Loading'
 import { UIDContext } from 'features/Auth/UIDProvider'
-import CookVerticalCard from 'features/Cook/VerticalCard/CookVerticalCard'
+import RecipeVerticalCard from 'features/Recipe/VerticalCard/RecipeVerticalCard'
 import {
   registerFavoriteRecipe,
   releaseFavoriteRecipe,
-} from 'features/Cook/operateFavoriteCook'
-import useRecipe from 'features/Cook/useRecipe'
+} from 'features/Recipe/operateFavoriteRecipe'
+import useRecipe from 'features/Recipe/useRecipe'
 
 const Recipe = () => {
   const { recipe, finishedFetch } = useRecipe()
@@ -21,7 +21,7 @@ const Recipe = () => {
       {finishedFetch ? (
         <div className={styles['container']}>
           {recipe && (
-            <CookVerticalCard
+            <RecipeVerticalCard
               header={recipe.recipeTitle}
               image={recipe.smallImageUrl}
               imageAlt={recipe.recipeTitle}
