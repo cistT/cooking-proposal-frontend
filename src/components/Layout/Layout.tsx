@@ -2,17 +2,18 @@ import React, { FC, ReactNode } from 'react'
 
 import styles from './Layout.module.scss'
 
-import Header from 'components/Header/Header'
+import Header, { HeaderProps } from 'components/Header/Header'
 
 type LayoutProps = Readonly<{
   children: ReactNode
-}>
+}> &
+  HeaderProps
 
 const Layout: FC<LayoutProps> = (props) => {
-  const { children } = props
+  const { children, uid, login, logout } = props
   return (
     <>
-      <Header />
+      <Header uid={uid} login={login} logout={logout} />
       <div className={styles['children']}>{children}</div>
     </>
   )
