@@ -16,7 +16,6 @@ const Template: ComponentStory<typeof HorizonCard> = (args) => (
 
 export const Primary = Template.bind({})
 Primary.args = {
-  href: testData[0].recipeUrl,
   image: testData[0].smallImageUrl,
   imageAlt: testData[0].recipeTitle,
   header: 'header',

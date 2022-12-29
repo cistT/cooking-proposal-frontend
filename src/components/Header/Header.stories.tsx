@@ -8,4 +8,6 @@ export default {
   component: Header,
 } as ComponentMeta<typeof Header>
 
-export const Template: ComponentStory<typeof Header> = () => <Header />
+export const Template: ComponentStory<typeof Header> = (props) => (
+  <Header {...props} />
+)
