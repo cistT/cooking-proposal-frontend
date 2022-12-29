@@ -1,11 +1,10 @@
-import { Button, Divider } from '@mantine/core'
-import { IconExternalLink } from '@tabler/icons'
+import { Divider } from '@mantine/core'
 import React, { FC } from 'react'
 
-import styles from './CookVerticalCard.module.scss'
+import FavoriteButton from '../FavoriteButton/FavoriteButton'
+import ShowRecipeButton from '../ShowRecipeButton/ShowRecipeButton'
 
 import VerticalCard from 'components/Card/VerticalCard/VerticalCard'
-import NoneUnderlineLink from 'components/Link/NoneUnderlineLink'
 import CookOverview, {
   CookOverviewProps,
 } from 'features/Cook/Overview/CookOverview'
@@ -15,11 +14,23 @@ type CookVerticalCardProps = Readonly<{
   image: string
   imageAlt?: string
   href: string
+  login?: boolean
+  registerFavoriteRecipe?: () => void
+  releaseFavoriteRecipe?: () => void
 }> &
   CookOverviewProps
 
 const CookVerticalCard: FC<CookVerticalCardProps> = (props) => {
-  const { description, indication, cost, material, href } = props
+  const {
+    description,
+    indication,
+    cost,
+    material,
+    href,
+    login = false,
+    registerFavoriteRecipe = () => undefined,
+    releaseFavoriteRecipe = () => undefined,
+  } = props
 
   return (
     <VerticalCard
@@ -32,16 +43,17 @@ const CookVerticalCard: FC<CookVerticalCardProps> = (props) => {
             cost={cost}
             material={material}
           />
+
           <Divider my='sm' />
-          <NoneUnderlineLink href={href} target='_blank'>
-            <Button
-              radius='md'
-              className={styles['button']}
-              leftIcon={<IconExternalLink />}
-            >
-              レシピを見に行く
-            </Button>
-          </NoneUnderlineLink>
+
+          <ShowRecipeButton href={href} />
+
+          {login && (
+            <FavoriteButton
+              register={registerFavoriteRecipe}
+              release={releaseFavoriteRecipe}
+            />
+          )}
         </>
       }
     />
