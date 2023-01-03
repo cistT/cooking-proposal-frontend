@@ -8,8 +8,7 @@ export const registerFavoriteRecipe = async (
     process.env.NEXT_PUBLIC_DATABASE_URL || 'http://localhost:8080'
   }/favorite`
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars, no-unused-vars
-  const res = await fetch(url, {
+  await fetch(url, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json;charset=utf-8',
@@ -30,8 +29,7 @@ export const releaseFavoriteRecipe = async (
     process.env.NEXT_PUBLIC_DATABASE_URL || 'http://localhost:8080'
   }/favorite/${userId}/${recipeId}`
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars, no-unused-vars
-  const res = await fetch(url, {
+  await fetch(url, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json;charset=utf-8',
