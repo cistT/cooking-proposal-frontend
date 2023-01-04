@@ -1,28 +1,30 @@
 import { useEffect, useState } from 'react'
 
 import Recipe from './Recipe'
-import fetchRecipeList from './fetchRecipeList'
-import getRandomRecipeCategoryID from './getRandomRecipeCategoryID'
+import fetchRecipe from './fetchRecipe'
 
 const useRecipe = () => {
   const [recipe, setRecipe] = useState<Recipe | null>(null)
   const [finishedFetch, setFinishedFetch] = useState(false)
-
+  let ignore = false
   useEffect(() => {
+    if (ignore) {
+      return
+    }
     ;(async () => {
-      const categoryID = getRandomRecipeCategoryID()
-      const recipeList = await fetchRecipeList(categoryID)
+      const recipe = await fetchRecipe()
 
-      if (recipeList.result) {
-        const recipe =
-          recipeList.result[
-            Math.floor(Math.random() * recipeList.result.length)
-          ]
+      if (recipe) {
         setRecipe(recipe)
       }
+
+      setFinishedFetch(true)
     })()
 
-    setFinishedFetch(true)
+    return () => {
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      ignore = true
+    }
   }, [])
 
   return { recipe, finishedFetch }
