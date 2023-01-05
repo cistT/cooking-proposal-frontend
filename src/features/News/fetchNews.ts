@@ -1,12 +1,8 @@
-import { FetchedNews } from './News'
+import { Contents } from './News'
 
-import { client } from 'features/News/client'
-
-const fetchNews = async (contentID?: string): Promise<FetchedNews> => {
-  const news: FetchedNews = await client.get({
-    endpoint: 'news',
-    contentId: contentID,
-  })
+const fetchNews = async (): Promise<Contents[]> => {
+  const res = await fetch('/api/news')
+  const news: Promise<Contents[]> = res.json()
 
   return news
 }
