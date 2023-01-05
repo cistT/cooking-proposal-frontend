@@ -17,10 +17,3 @@ export type Contents = {
   content: string
   category?: Category
 }
-
-export type FetchedNews = {
-  contents: Contents[]
-  totalCount: number
-  offset: number
-  limit: number
-}
