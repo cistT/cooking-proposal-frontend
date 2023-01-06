@@ -44,18 +44,19 @@ const RecipeHorizonCard: FC<RecipeHorizonCardProps> = (props) => {
             cost={cost}
             material={material}
           />
-
-          <div className={styles['group']}>
-            <ShowRecipeButton href={href} />
-            {login && (
-              <FavoriteButton
-                register={registerFavoriteRecipe}
-                release={releaseFavoriteRecipe}
-                initialFavorite
-              />
-            )}
-          </div>
         </>
+      }
+      underContents={
+        <div className={styles['group']}>
+          <ShowRecipeButton href={href} />
+          {login && (
+            <FavoriteButton
+              register={registerFavoriteRecipe}
+              release={releaseFavoriteRecipe}
+              initialFavorite
+            />
+          )}
+        </div>
       }
     />
   )
