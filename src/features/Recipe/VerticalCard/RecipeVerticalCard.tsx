@@ -15,6 +15,7 @@ type RecipeVerticalCardProps = Readonly<{
   imageAlt?: string
   href: string
   login?: boolean
+  initialFavorite?: boolean
   registerFavoriteRecipe?: () => void
   releaseFavoriteRecipe?: () => void
 }> &
@@ -28,6 +29,7 @@ const RecipeVerticalCard: FC<RecipeVerticalCardProps> = (props) => {
     material,
     href,
     login = false,
+    initialFavorite = false,
     registerFavoriteRecipe = () => undefined,
     releaseFavoriteRecipe = () => undefined,
   } = props
@@ -50,6 +52,7 @@ const RecipeVerticalCard: FC<RecipeVerticalCardProps> = (props) => {
 
           {login && (
             <FavoriteButton
+              initialFavorite={initialFavorite}
               register={registerFavoriteRecipe}
               release={releaseFavoriteRecipe}
             />
