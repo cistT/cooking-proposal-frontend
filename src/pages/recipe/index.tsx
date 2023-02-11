@@ -4,51 +4,70 @@ import styles from './index.module.scss'
 
 import BackButton from 'components/Button/BackButton/BackButton'
 import Loading from 'components/Loading/Loading'
-import { UIDContext } from 'features/Auth/UIDProvider'
-import RecipeVerticalCard from 'features/Recipe/VerticalCard/RecipeVerticalCard'
+import { UIDContext } from 'features/Auth/components/UIDProvider'
 import {
-  registerFavoriteRecipe,
-  releaseFavoriteRecipe,
-} from 'features/Recipe/operateFavoriteRecipe'
-import useRecipe from 'features/Recipe/useRecipe'
+  useFetchRandomRecipe,
+  useRegisterFavoriteRecipe,
+  useReleaseFavoriteRecipe,
+} from 'features/Recipe'
+import RecipeVerticalCard from 'features/Recipe/components/VerticalCard/RecipeVerticalCard'
 
 const Recipe = () => {
-  const { recipe, finishedFetch } = useRecipe()
   const uid = useContext(UIDContext)
 
+  const { recipe, isLoading } = useFetchRandomRecipe()
+  const { registerFavoriteRecipe } = useRegisterFavoriteRecipe()
+  const { releaseFavoriteRecipe } = useReleaseFavoriteRecipe()
+
+  if (isLoading) {
+    return <Loading />
+  }
+
+  if (!recipe) {
+    return (
+      <>
+        <p>データが取得できませんでした。</p>
+        <BackButton />
+      </>
+    )
+  }
+
   return (
-    <>
-      {finishedFetch ? (
-        <div className={styles['container']}>
-          {recipe && (
-            <RecipeVerticalCard
-              header={recipe.recipeTitle}
-              image={recipe.smallImageUrl}
-              imageAlt={recipe.recipeTitle}
-              description={recipe.recipeDescription}
-              indication={recipe.recipeIndication}
-              cost={recipe.recipeCost}
-              material={recipe.recipeMaterial}
-              href={recipe.recipeUrl}
-              login={uid ? true : false}
-              registerFavoriteRecipe={() => {
-                if (uid) {
-                  registerFavoriteRecipe(uid, recipe)
-                }
-              }}
-              releaseFavoriteRecipe={() => {
-                if (uid) {
-                  releaseFavoriteRecipe(uid, recipe.recipeId)
-                }
-              }}
-            />
-          )}
-          <BackButton />
-        </div>
-      ) : (
-        <Loading />
-      )}
-    </>
+    <div className={styles['container']}>
+      <RecipeVerticalCard
+        {...recipe}
+        header={recipe.title}
+        imageAlt={recipe.title}
+        login={uid ? true : false}
+        registerFavoriteRecipe={() => {
+          if (uid) {
+            registerFavoriteRecipe.mutate({
+              userID: uid,
+              recipe: {
+                id: recipe.id,
+                title: recipe.title,
+                url: recipe.url,
+                image: recipe.image,
+                cost: recipe.cost,
+                description: recipe.description,
+                indication: recipe.indication,
+                material: recipe.material,
+              },
+            })
+          }
+        }}
+        releaseFavoriteRecipe={() => {
+          if (uid) {
+            releaseFavoriteRecipe.mutate({
+              userID: uid,
+              recipeID: recipe.id,
+            })
+          }
+        }}
+      />
+
+      <BackButton />
+    </div>
   )
 }
 

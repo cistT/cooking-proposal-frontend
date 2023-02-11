@@ -5,7 +5,7 @@ import styles from './Header.module.scss'
 
 import NoneUnderlineLink from 'components/Link/NoneUnderlineLink'
 import { APP_NAME } from 'consts/app'
-import { UID } from 'features/Auth/UID'
+import { UID } from 'features/Auth'
 
 export type HeaderProps = Readonly<{
   uid: UID

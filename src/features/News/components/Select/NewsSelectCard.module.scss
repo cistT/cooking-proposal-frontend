@@ -1,0 +1,14 @@
+@use 'styles/variables.scss';
+
+.card {
+  .upper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 40px;
+  }
+
+  > .title {
+    font-size: variables.$header-font-size-medium;
+  }
+}

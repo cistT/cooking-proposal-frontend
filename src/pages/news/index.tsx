@@ -1,32 +1,26 @@
 import { Text } from '@mantine/core'
-import React, { useContext, useEffect } from 'react'
+import React from 'react'
 
 import styles from './index.module.scss'
 
 import BackButton from 'components/Button/BackButton/BackButton'
 import Loading from 'components/Loading/Loading'
-import NewsSelectCard from 'features/News/Select/NewsSelectCard'
-import useFetchNews from 'features/News/useFetchNews'
-import { NewsContext } from 'pages/_app'
+import { useFetchNewsList } from 'features/News'
+import NewsSelectCard from 'features/News/components/Select/NewsSelectCard'
 
 const NewsSelect = () => {
-  const { news, finishedFetch } = useFetchNews()
-
-  const temporarilySavedNewsnews = useContext(NewsContext)
-  useEffect(() => {
-    temporarilySavedNewsnews(news)
-  }, [news, temporarilySavedNewsnews])
+  const { newsList, isLoading } = useFetchNewsList()
 
   return (
     <div className={styles['container']}>
       <Text className={styles['text']}>お知らせ</Text>
 
-      {finishedFetch ? (
+      {!isLoading ? (
         <>
-          {news.length === 0 && (
+          {newsList.length === 0 && (
             <Text className={styles['text']}>現在、お知らせはありません。</Text>
           )}
-          {news.map((data) => (
+          {newsList.map((data) => (
             <NewsSelectCard
               key={data.id}
               id={data.id}
