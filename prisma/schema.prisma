@@ -1,0 +1,26 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model FavoriteCook{
+  id Int @id @default(autoincrement())
+  userID String
+  updateAt DateTime
+
+  recipeID Int
+  title String
+  url String
+  image String
+  cost String
+  description String
+  indication String
+  material String[]
+}
