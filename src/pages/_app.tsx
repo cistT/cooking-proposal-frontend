@@ -20,7 +20,11 @@ const App = ({ Component, pageProps }: AppProps) => {
     )
   }
 
-  return <Loading />
+  return (
+    <Layout uid={uid} login={login} logout={logout}>
+      <Loading />
+    </Layout>
+  )
 }
 
 export default trpc.withTRPC(App)
