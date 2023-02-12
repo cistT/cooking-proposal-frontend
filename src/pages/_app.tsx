@@ -1,6 +1,8 @@
 import type { AppProps } from 'next/app'
 
+
 import 'modern-css-reset/dist/reset.min.css'
+import 'tailwindcss/tailwind.css';
 
 import Layout from 'components/Layout/Layout'
 import Loading from 'components/Loading/Loading'
