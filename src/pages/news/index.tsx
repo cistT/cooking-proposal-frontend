@@ -29,12 +29,11 @@ const NewsSelect = () => {
               date={new Date(data.publishedAt)}
             />
           ))}
+          <BackButton />
         </>
       ) : (
         <Loading />
       )}
-
-      <BackButton />
     </div>
   )
 }
