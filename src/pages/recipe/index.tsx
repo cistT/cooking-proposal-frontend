@@ -11,11 +11,12 @@ import {
   useReleaseFavoriteRecipe,
 } from 'features/Recipe'
 import RecipeVerticalCard from 'features/Recipe/components/VerticalCard/RecipeVerticalCard'
+import ReloadButton from 'components/Button/ReloadButton/ReloadButton'
 
 const Recipe = () => {
   const uid = useContext(UIDContext)
 
-  const { recipe, isLoading } = useFetchRandomRecipe()
+  const { recipe, isLoading, refetchRecipe } = useFetchRandomRecipe()
   const { registerFavoriteRecipe } = useRegisterFavoriteRecipe()
   const { releaseFavoriteRecipe } = useReleaseFavoriteRecipe()
 
@@ -34,6 +35,10 @@ const Recipe = () => {
 
   return (
     <div className={styles['container']}>
+      <ReloadButton
+        onClick={refetchRecipe}
+        className={styles['reload-button']}
+      />
       <RecipeVerticalCard
         {...recipe}
         header={recipe.title}
