@@ -6,18 +6,17 @@ import { trpc } from 'utiles/trpc'
 type UseFetchRandomRecipe = () => {
   recipe?: Recipe
   isLoading: boolean
+  refetchRecipe: () => Promise<void>
 }
 
 export const useFetchRandomRecipe: UseFetchRandomRecipe = () => {
-  const res = trpc.fetchRandomRecipe.useQuery(undefined, {})
-  const [isLoading, setIsLoading] = useState(true)
-  useEffect(() => {
-    if (res.data) {
-      setIsLoading(false)
-    }
-  }, [res])
+  const res = trpc.fetchRandomRecipe.useQuery()
 
+  const isLoading = res.isLoading
   const recipe = res?.data?.recipe
-  // refetchOnWindowFocus: false,
-  return { recipe, isLoading }
+  const refetchRecipe = async () => {
+    await res.refetch()
+  }
+
+  return { recipe, isLoading, refetchRecipe }
 }
